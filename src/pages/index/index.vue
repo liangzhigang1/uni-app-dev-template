@@ -2,7 +2,7 @@
 // 引入轮播图
 import XtxSwiper from '@/components/XtxSwiper.vue';
 // 引入获取广告区域接口
-import { getHomeBannerAPI } from '@/services/home'
+import { getHomeBannerAPI, getHomeCategoryAPI } from '@/services/home'
 // 引入小程序生命周期
 import { onLoad } from '@dcloudio/uni-app';
 //
@@ -22,8 +22,14 @@ const getHomeBannerData = async () => {
   bannerList.value = res.result
   console.log(res);
 }
+// 定义首页-前台分类接口-小程序
+const getHomeCategoryData = async () => {
+  const res = await getHomeCategoryAPI()
+  console.log(res)
+}
 onLoad(() => {
   getHomeBannerData()
+  getHomeCategoryData()
 })
 </script>
 
