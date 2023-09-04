@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// 引入轮播图
+// 引入轮播图（公共组件）采用自动导入的方式
 // import XtxSwiper from '@/components/XtxSwiper.vue';
 // 引入获取广告区域接口
 import { getHomeBannerAPI, getHomeCategoryAPI, getHomeHotAPI } from '@/services/home'
@@ -7,21 +7,25 @@ import { getHomeBannerAPI, getHomeCategoryAPI, getHomeHotAPI } from '@/services/
 import { onLoad } from '@dcloudio/uni-app';
 // vue
 import { ref } from 'vue'
-// home类型
+// 首页类型
 import type { BannerItem, CategoryItem, HotItem } from '@/types/home'
-// CustomNavbar
+// CustomNavbar（自定义导航栏）
 import CustomNavbar from './components/CustomNavbar.vue'
-// CategoryPanel
+// CategoryPanel（分类）
 import CategoryPanel from './components/CategoryPanel.vue'
-// HotPanel
+// HotPanel（热门推荐）
 import HotPanel from './components/HotPanel.vue'
-// XtxGuess
+// XtxGuess（猜你喜欢公共组件）
 // import XtxGuess from '@/components/XtxGuess.vue'
-//
+// 定义ts组件实例类型（猜你喜欢）
 import type { XtxGuessInstance } from '@/types/components';
 // 首页骨架屏
 import PageSkeleton from './components/PageSkeleton.vue'
 
+import { useGuessList } from "@/composables/index"
+
+// 猜你喜欢组合式函数
+const { guessRef, onScrolltolower } = useGuessList()
 
 // 定义bannerList
 const bannerList = ref<BannerItem[]>([])
@@ -48,11 +52,11 @@ const getHomeHotData = async () => {
 }
 
 // 获取猜你喜欢组件实例
-const guessRef = ref<XtxGuessInstance>()
-// 滚动触底事件
-const onScrolltolower = () => {
-  guessRef.value?.getMore()
-}
+// const guessRef = ref<XtxGuessInstance>()
+// // 滚动触底事件
+// const onScrolltolower = () => {
+//   guessRef.value?.getMore()
+// }
 
 // 下拉刷新状态
 const isTriggered = ref(false)

@@ -1,5 +1,5 @@
 {
-  // 组件自动引入规则
+	// 组件自动引入规则
 	"easycom": {
 		// 是否开启自动扫描
 		"autoscan": true,
@@ -37,6 +37,24 @@
 			"path": "pages/category/category",
 			"style": {
 				"navigationBarTitleText": "分类"
+			}
+		},
+		{
+			"path": "pages/hot/hot",
+			"style": {
+				"navigationBarTitleText": "热门推荐"
+			}
+		},
+		{
+			"path": "pages/goods/goods",
+			"style": {
+				"navigationBarTitleText": "goods"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "login"
 			}
 		}
 	],
@@ -80,6 +98,35 @@
 		]
 	},
 	"subPackages": [
+		{
+			"root": "pagesMember",
+			"pages": [
+				{
+					"path": "settings/settings",
+					"style": {
+						"navigationBarTitleText": "设置"
+					}
+				},
+				{
+					"path": "profile/profile",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white",
+						"navigationBarTitleText": "个人信息"
+					}
+				}
+			]
+		}
 	],
-  "lazyCodeLoading": "requiredComponents"
+	// 分包预下载规则
+	"preloadRule": {
+		// 进入 我的 页面时，预下载分包
+		"pages/my/my": {
+			"network": "all",
+			"packages": [
+				"pagesMember"
+			]
+		}
+	},
+	"lazyCodeLoading": "requiredComponents"
 }

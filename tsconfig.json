@@ -4,6 +4,7 @@
     "allowJs": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "ignoreDeprecations": "5.0",// 选项“importsNotUsedAsValues”已弃用，并将停止在TypeScript 5.5中运行。指定compilerOption“”ignoreDeprecations“：”5.0“”以消除此错误
     "paths": {
       "@/*": ["./src/*"]
     },

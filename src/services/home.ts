@@ -2,7 +2,7 @@
 import { http } from '@/utils/http'
 // 引入接口返回类型
 import type { BannerItem, CategoryItem, GuessItem, HotItem, PageResult } from '@/types/home'
-import type { PageParams } from '@/types/global'
+import type { GoodsItem, PageParams } from '@/types/global'
 
 /**
  * 首页0广告区域-小程序
@@ -35,8 +35,8 @@ export const getHomeCategoryAPI = () => {
 export const getHomeHotAPI = () => {
   return http<HotItem[]>({
     method: 'GET',
-  url: '/home/hot/mutli'
-})
+    url: '/home/hot/mutli'
+  })
 }
 
 /**
